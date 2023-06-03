@@ -1,5 +1,6 @@
 version: '3.4'
 services:
+
   rasa:
     image: rasa-bot:latest
     working_dir: /app
@@ -11,6 +12,7 @@ services:
     command: bash -c "rm -rf models/* && rasa train && rasa run --enable-api --debug"
     ports:
       - '5005:5005'
+    public: true
     networks:
       - all
 
