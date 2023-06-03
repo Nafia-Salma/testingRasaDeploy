@@ -2,34 +2,33 @@ version: '3.4'
 services:
   rasa:
     image: rasa-bot:latest
-    working_dir : /app
+    working_dir: /app
     build: "./"
     restart: always
     volumes:
-    - ./actions: ./app/actions
-    - ./data: ./app/data
-    - ./models: ./app/models
-    command: bash -c "rm -rf models/* && rasa  && rasa run -enable-api --core \"*\" --debug"
+      - ./actions:/app/actions
+      - ./data:/app/data
+      - ./models:/app/models
+    command: bash -c "rm -rf models/* && rasa && rasa run -enable-api --core \"*\" --debug"
     ports:
-    - '5005:5005'
+      - '5005:5005'
     networks:
-    - all
+      - all
 
   rasa-actions:
     image: rasa-bot:latest
-    working_dir : /app
+    working_dir: /app
     build: "./"
     restart: always
     volumes:
-    - ./actions: ./app/actions
-  ports:
-    - '5005:5005'
-  networks:
-    - all
-
+      - ./actions:/app/actions
+    ports:
+      - '5005:5005'
+    networks:
+      - all
 
 networks:
-  all: 
+  all:
     driver: bridge
-    driver_opts: 
+    driver_opts:
       com.docker.networks.enabled: "true"
