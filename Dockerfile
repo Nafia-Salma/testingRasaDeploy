@@ -1,13 +1,13 @@
-FROM python:3.8.16-stretch AS BASE
+FROM python:3.8.16-slim-buster AS BASE
 
 RUN apt-get update \
-   && apt-get --assume-yes --no-install-recommends install\
-   build-essential \
-   curl \
-   git \
-   jq \
-   libgomp1 \
-   vim 
+      && apt-get --assume-yes --no-install-recommends install\
+      build-essential \
+      curl \
+      git \
+      jq \
+      libgomp1 \
+      vim 
 
 WORKDIR /app
 
