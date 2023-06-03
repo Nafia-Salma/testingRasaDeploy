@@ -1,22 +1,20 @@
-FROM python:3.8.16-stretch AS BASE
+FROM python:3.7.7-stretch AS BASE
 
 RUN apt-get update \
-   && apt-get --assume-yes --no-install-recommends install\
-   build-essential \
-   curl \
-   git \
-   jq \
-   libgomp1 \
-   vim 
+    && apt-get --assume-yes --no-install-recommends install \
+        build-essential \
+        curl \
+        git \
+        jq \
+        libgomp1 \
+        vim
 
 WORKDIR /app
 
-# Upgrade pip version
+# upgrade pip version
 RUN pip install --no-cache-dir --upgrade pip
 
-# Install Rasa version 3.5.10
-RUN pip install --no-cache-dir rasa==3.5.10
-
+RUN pip install rasa==2.8.1
 
 ADD config.yml config.yml
 ADD domain.yml domain.yml
