@@ -2,29 +2,22 @@ version: "3.1"
 
 stories:
 
-- story: happy path
+- story: chitchat
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
+  - intent: chitchat
+  - action: utter_chitchat
 
-- story: sad path 1
+- story: faq
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
+  - intent: faq
+  - action: utter_faq
 
-- story: sad path 2
+- story: contact us form
   steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
+  - intent: contact_us
+  - action: contact_us_form
+  - active_loop: contact_us_form
